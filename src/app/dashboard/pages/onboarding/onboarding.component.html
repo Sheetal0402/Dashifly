@@ -1,0 +1,243 @@
+<div class="onboarding-page">
+  <div class="onboarding-header">
+    <h1 class="page-title">Welcome to Dashify!</h1>
+    <p class="page-subtitle">Let's get you set up in just a few steps</p>
+  </div>
+
+  <mat-stepper [linear]="true" #stepper class="onboarding-stepper">
+    <!-- Step 1: Profile Setup -->
+    <mat-step [stepControl]="profileForm" label="Profile Setup" icon="person">
+      <form [formGroup]="profileForm" (ngSubmit)="onProfileSubmit()">
+        <div class="step-content">
+          <div class="step-header">
+            <mat-icon color="primary">person</mat-icon>
+            <h2>Tell us about yourself</h2>
+            <p>This information helps us personalize your experience</p>
+          </div>
+
+          <div class="form-grid">
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input matInput formControlName="firstName" placeholder="Enter your first name">
+              <mat-error *ngIf="profileForm.get('firstName')?.hasError('required')">
+                First name is required
+              </mat-error>
+              <mat-error *ngIf="profileForm.get('firstName')?.hasError('minlength')">
+                First name must be at least 2 characters
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Last Name</mat-label>
+              <input matInput formControlName="lastName" placeholder="Enter your last name">
+              <mat-error *ngIf="profileForm.get('lastName')?.hasError('required')">
+                Last name is required
+              </mat-error>
+              <mat-error *ngIf="profileForm.get('lastName')?.hasError('minlength')">
+                Last name must be at least 2 characters
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Job Title</mat-label>
+              <input matInput formControlName="jobTitle" placeholder="e.g., Product Manager">
+              <mat-error *ngIf="profileForm.get('jobTitle')?.hasError('required')">
+                Job title is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Company</mat-label>
+              <input matInput formControlName="company" placeholder="Enter your company name">
+              <mat-error *ngIf="profileForm.get('company')?.hasError('required')">
+                Company is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Industry</mat-label>
+              <mat-select formControlName="industry" placeholder="Select your industry">
+                <mat-option *ngFor="let industry of industries" [value]="industry">
+                  {{ industry }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="profileForm.get('industry')?.hasError('required')">
+                Industry is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+              <mat-label>Team Size</mat-label>
+              <mat-select formControlName="teamSize" placeholder="Select team size">
+                <mat-option *ngFor="let size of teamSizes" [value]="size">
+                  {{ size }} employees
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="profileForm.get('teamSize')?.hasError('required')">
+                Team size is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Phone Number (Optional)</mat-label>
+              <input matInput formControlName="phoneNumber" placeholder="+1 (555) 123-4567">
+              <mat-error *ngIf="profileForm.get('phoneNumber')?.hasError('pattern')">
+                Please enter a valid phone number
+              </mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+
+        <div class="step-actions">
+          <button mat-raised-button color="primary" matStepperNext [disabled]="!profileForm.valid">
+            Next
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 2: Preferences -->
+    <mat-step [stepControl]="preferencesForm" label="Preferences" icon="tune">
+      <form [formGroup]="preferencesForm" (ngSubmit)="onPreferencesSubmit()">
+        <div class="step-content">
+          <div class="step-header">
+            <mat-icon color="primary">tune</mat-icon>
+            <h2>Customize your experience</h2>
+            <p>Help us tailor Dashify to your needs</p>
+          </div>
+
+          <div class="preferences-section">
+            <h3>Communication Preferences</h3>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>Preferred Communication Method</mat-label>
+              <mat-select formControlName="communicationMethod">
+                <mat-option value="email">Email</mat-option>
+                <mat-option value="sms">SMS</mat-option>
+                <mat-option value="phone">Phone</mat-option>
+                <mat-option value="none">No communication</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <div class="checkbox-group">
+              <mat-checkbox formControlName="newsletterOptIn">
+                Subscribe to our newsletter for product updates and tips
+              </mat-checkbox>
+              <mat-checkbox formControlName="marketingOptIn">
+                Receive marketing communications and special offers
+              </mat-checkbox>
+            </div>
+          </div>
+
+          <div class="preferences-section">
+            <h3>Primary Goal</h3>
+            <mat-radio-group formControlName="primaryGoal" class="radio-group">
+              <mat-radio-button value="analytics">Improve business analytics</mat-radio-button>
+              <mat-radio-button value="collaboration">Enhance team collaboration</mat-radio-button>
+              <mat-radio-button value="automation">Automate workflows</mat-radio-button>
+              <mat-radio-button value="reporting">Better reporting and insights</mat-radio-button>
+              <mat-radio-button value="efficiency">Increase operational efficiency</mat-radio-button>
+            </mat-radio-group>
+          </div>
+
+          <div class="preferences-section">
+            <h3>Experience Level</h3>
+            <mat-form-field appearance="outline" class="full-width">
+              <mat-label>How familiar are you with similar tools?</mat-label>
+              <mat-select formControlName="experienceLevel">
+                <mat-option value="beginner">Beginner - New to these types of tools</mat-option>
+                <mat-option value="intermediate">Intermediate - Some experience</mat-option>
+                <mat-option value="advanced">Advanced - Very experienced</mat-option>
+                <mat-option value="expert">Expert - I could teach others</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="preferences-section">
+            <h3>Features of Interest</h3>
+            <p class="section-description">Select the features you're most interested in (optional)</p>
+            <div class="features-grid">
+              <mat-card 
+                *ngFor="let feature of features" 
+                class="feature-card"
+                [class.selected]="isFeatureSelected(feature.id)"
+                (click)="toggleFeature(feature.id)">
+                <mat-card-content>
+                  <div class="feature-header">
+                    <span class="feature-name">{{ feature.name }}</span>
+                    <mat-icon *ngIf="isFeatureSelected(feature.id)" color="primary">check_circle</mat-icon>
+                  </div>
+                  <p class="feature-description">{{ feature.description }}</p>
+                </mat-card-content>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+
+        <div class="step-actions">
+          <button mat-button matStepperPrevious>
+            <mat-icon>arrow_back</mat-icon>
+            Back
+          </button>
+          <button mat-raised-button color="primary" matStepperNext [disabled]="!preferencesForm.valid">
+            Next
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
+        </div>
+      </form>
+    </mat-step>
+
+    <!-- Step 3: Welcome -->
+    <mat-step label="Welcome" icon="celebration">
+      <div class="step-content">
+        <div class="welcome-content">
+          <div class="welcome-icon">
+            <mat-icon color="primary">celebration</mat-icon>
+          </div>
+          
+          <h2>You're all set!</h2>
+          <p class="welcome-message">
+            Thank you for completing your profile setup. You're now ready to start using Dashify 
+            to streamline your workflows and boost productivity.
+          </p>
+
+          <div class="next-steps">
+            <h3>What's next?</h3>
+            <div class="steps-list">
+              <div class="step-item">
+                <mat-icon>dashboard</mat-icon>
+                <span>Explore your personalized dashboard</span>
+              </div>
+              <div class="step-item">
+                <mat-icon>settings</mat-icon>
+                <span>Configure your workspace settings</span>
+              </div>
+              <div class="step-item">
+                <mat-icon>group_add</mat-icon>
+                <span>Invite your team members</span>
+              </div>
+              <div class="step-item">
+                <mat-icon>help</mat-icon>
+                <span>Check out our help center and tutorials</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="welcome-actions">
+            <button mat-raised-button color="primary" (click)="onComplete()" class="complete-button">
+              <mat-icon>rocket_launch</mat-icon>
+              Get Started
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-actions">
+        <button mat-button matStepperPrevious>
+          <mat-icon>arrow_back</mat-icon>
+          Back
+        </button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+</div>

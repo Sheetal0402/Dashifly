@@ -1,0 +1,349 @@
+@use '../../../styles/variables' as *;
+
+.dashboard-layout {
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+// Sidenav Styles
+.sidenav {
+  width: 280px;
+  background-color: var(--surface-color);
+  border-right: 1px solid var(--border-color);
+
+  @include mobile {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+
+.sidenav-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-md;
+  border-bottom: 1px solid var(--border-color);
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    .brand-logo {
+      width: 36px;
+      height: 36px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .brand-text {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--text-primary);
+    }
+  }
+
+  .close-button {
+    color: var(--text-secondary);
+  }
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: $spacing-sm;
+  padding: $spacing-md;
+  margin: $spacing-sm 0;
+
+  .user-avatar {
+    width: 48px;
+    height: 48px;
+    background: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    font-size: 16px;
+  }
+
+  .user-info {
+    flex: 1;
+    min-width: 0;
+
+    .user-name {
+      font-weight: 500;
+      color: var(--text-primary);
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .user-email {
+      font-size: 12px;
+      color: var(--text-secondary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+  }
+}
+
+.nav-list {
+  padding: $spacing-sm 0;
+
+  .mat-mdc-list-item {
+    height: 48px;
+    margin: 0 $spacing-sm;
+    border-radius: 8px;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: rgba(var(--primary-color-rgb), 0.04);
+    }
+
+    &.active {
+      background-color: rgba(var(--primary-color-rgb), 0.08);
+      color: var(--primary-color);
+
+      .mat-icon {
+        color: var(--primary-color);
+      }
+    }
+
+    .mat-icon {
+      color: var(--text-secondary);
+      margin-right: $spacing-sm;
+    }
+
+    .badge-container {
+      display: flex;
+      align-items: center;
+    }
+  }
+}
+
+.help-section {
+  margin-top: auto;
+  padding: $spacing-sm 0;
+
+  .mat-mdc-list-item {
+    height: 44px;
+    margin: 0 $spacing-sm;
+    border-radius: 8px;
+    opacity: 0.8;
+
+    &:hover {
+      background-color: rgba(var(--text-secondary-rgb), 0.04);
+      opacity: 1;
+    }
+
+    .mat-icon {
+      color: var(--text-secondary);
+      margin-right: $spacing-sm;
+    }
+  }
+}
+
+// Main Content Styles
+.main-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.top-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  border-bottom: 1px solid var(--border-color);
+  background-color: var(--surface-color) !important;
+  color: var(--text-primary) !important;
+
+  .toolbar-spacer {
+    flex: 1 1 auto;
+  }
+
+  .mat-mdc-icon-button {
+    color: var(--text-primary);
+    
+    &:hover {
+      background-color: rgba(var(--text-primary-rgb), 0.04);
+    }
+  }
+
+  .user-menu-button {
+    .user-avatar-small {
+      width: 32px;
+      height: 32px;
+      background: var(--primary-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 500;
+      font-size: 12px;
+    }
+  }
+}
+
+.page-content {
+  flex: 1;
+  padding: $spacing-md;
+  overflow-y: auto;
+  background-color: var(--background-color);
+
+  @include mobile {
+    padding: $spacing-sm;
+  }
+}
+
+// Menu Customizations
+::ng-deep {
+  .notification-menu {
+    width: 320px;
+    max-height: 400px;
+
+    .notification-header {
+      display: flex !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      font-weight: 500 !important;
+      color: var(--text-primary) !important;
+      padding: $spacing-sm $spacing-md !important;
+    }
+
+    .no-notifications {
+      text-align: center !important;
+      color: var(--text-secondary) !important;
+      font-style: italic !important;
+      padding: $spacing-md !important;
+    }
+
+    .notification-item {
+      white-space: normal !important;
+      height: auto !important;
+      padding: $spacing-sm $spacing-md !important;
+      border-bottom: 1px solid var(--border-color);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .notification-content {
+        width: 100%;
+
+        .notification-title {
+          font-weight: 500;
+          color: var(--text-primary);
+          margin-bottom: 4px;
+          font-size: 14px;
+        }
+
+        .notification-message {
+          color: var(--text-secondary);
+          font-size: 12px;
+          line-height: 1.4;
+          margin-bottom: 4px;
+        }
+
+        .notification-time {
+          color: var(--text-secondary);
+          font-size: 11px;
+          opacity: 0.8;
+        }
+      }
+    }
+  }
+
+  .mat-mdc-menu-panel {
+    .user-menu-header {
+      padding: $spacing-md !important;
+      border-bottom: 1px solid var(--border-color);
+
+      .user-menu-info {
+        .user-menu-name {
+          font-weight: 500;
+          color: var(--text-primary);
+          font-size: 14px;
+          margin-bottom: 2px;
+        }
+
+        .user-menu-email {
+          color: var(--text-secondary);
+          font-size: 12px;
+        }
+      }
+    }
+  }
+
+  // Badge customizations
+  .mat-badge-content {
+    font-size: 10px;
+    font-weight: 500;
+  }
+
+  .mat-badge-small .mat-badge-content {
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+  }
+}
+
+// Dark theme adjustments
+.dark-theme {
+  .sidenav {
+    background-color: var(--surface-dark);
+    border-right-color: var(--border-dark);
+  }
+
+  .top-toolbar {
+    background-color: var(--surface-dark) !important;
+    border-bottom-color: var(--border-dark);
+  }
+
+  .page-content {
+    background-color: var(--background-dark);
+  }
+}
+
+// Responsive adjustments
+@include tablet {
+  .sidenav {
+    width: 240px;
+  }
+
+  .page-content {
+    padding: $spacing-sm;
+  }
+}
+
+@include mobile {
+  .user-profile {
+    padding: $spacing-sm;
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      font-size: 14px;
+    }
+  }
+
+  .nav-list .mat-mdc-list-item {
+    height: 44px;
+  }
+
+  .page-content {
+    padding: $spacing-xs;
+  }
+}

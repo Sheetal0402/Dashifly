@@ -1,59 +1,87 @@
-# Dashify
+# Dashify - Angular 17+ Demo Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.3.
+A comprehensive demo application built with Angular 17+, showcasing modern web development practices with Angular Material, responsive design, and clean architecture.
 
-## Development server
+## 🚀 Features
 
-To start a local development server, run:
+### Public Marketing Website
+- **Home Page**: Hero section, features overview, testimonials
+- **Features Page**: Detailed feature showcase with interactive tabs
+- **Pricing Page**: Flexible pricing tiers with monthly/yearly toggle
+- **FAQ Page**: Expandable FAQ sections with search functionality
+- **Responsive Navigation**: Mobile-friendly navigation with Material toolbar
 
-```bash
-ng serve
-```
+### Authenticated Dashboard
+- **Overview Dashboard**: Stats cards, activity feed, progress indicators
+- **Onboarding Wizard**: 3-step guided setup with Material stepper
+- **Settings Page**: Account management, notifications, security
+- **Billing Page**: Subscription management with Stripe placeholders
+- **Responsive Layout**: Collapsible sidebar with mobile support
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+### Technical Features
+- **Authentication**: Mock auth service with route guards
+- **Theming**: Light/dark theme support with Material Design
+- **Responsive Design**: Mobile-first approach with breakpoint utilities
+- **Modern Architecture**: Standalone components, lazy loading, reactive forms
+- **Type Safety**: Full TypeScript implementation with strict mode
 
-## Code scaffolding
+## 🛠️ Tech Stack
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+- **Framework**: Angular 17+
+- **UI Library**: Angular Material + Angular CDK
+- **Styling**: SCSS with design tokens and utility classes
+- **State Management**: RxJS with BehaviorSubjects
+- **Routing**: Angular Router with lazy loading and guards
+- **Forms**: Reactive Forms with validation
+- **Icons**: Material Design Icons
+- **Build Tool**: Angular CLI
 
-```bash
-ng generate component component-name
-```
+## 🚀 Getting Started
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+### Prerequisites
+- Node.js 18+
+- npm or yarn
+- Angular CLI 17+
 
-```bash
-ng generate --help
-```
+### Installation
 
-## Building
+1. **Clone the repository**
+   ```bash
+   git clone <repository-url>
+   cd dashify
+   ```
 
-To build the project run:
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-```bash
-ng build
-```
+3. **Start the development server**
+   ```bash
+   npm start
+   ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+4. **Open your browser**
+   Navigate to `http://localhost:4200`
 
-## Running unit tests
+### Demo Credentials
+- **Email**: demo@dashify.app
+- **Password**: password123
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 📱 Usage Guide
 
-```bash
-ng test
-```
+### Public Routes
+- `/` - Home page with hero and features
+- `/features` - Detailed features showcase
+- `/pricing` - Pricing plans and tiers
+- `/faq` - Frequently asked questions
 
-## Running end-to-end tests
+### Authentication
+- `/auth/login` - User login page
+- Protected routes redirect to login when not authenticated
 
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+### Dashboard Routes (Protected)
+- `/app/overview` - Dashboard with stats and activity
+- `/app/onboarding` - Guided setup wizard
+- `/app/settings` - Account and preferences
+- `/app/billing` - Subscription and billing

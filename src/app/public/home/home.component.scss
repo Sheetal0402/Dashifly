@@ -1,0 +1,378 @@
+@use '../../../styles/variables' as *;
+@use 'sass:color';
+
+.home {
+  .hero {
+    background: linear-gradient(135deg, $primary-color 0%, color.adjust($primary-color, $lightness: 10%) 100%);
+    color: white;
+    padding: $spacing-3xl 0;
+    min-height: 80vh;
+    display: flex;
+    align-items: center;
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: $spacing-3xl;
+      align-items: center;
+
+      @media (max-width: $breakpoint-lg) {
+        grid-template-columns: 1fr;
+        gap: $spacing-xl;
+        text-align: center;
+      }
+    }
+
+    &__content {
+      .hero__title {
+        font-size: $font-size-4xl;
+        font-weight: $font-weight-bold;
+        margin: 0 0 $spacing-lg 0;
+        line-height: 1.2;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-3xl;
+        }
+      }
+
+      .hero__highlight {
+        background: linear-gradient(135deg, $accent-color, color.adjust($accent-color, $lightness: 20%));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .hero__subtitle {
+        font-size: $font-size-xl;
+        margin: 0 0 $spacing-xl 0;
+        opacity: 0.9;
+        line-height: 1.6;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-lg;
+        }
+      }
+
+      .hero__actions {
+        display: flex;
+        gap: $spacing-md;
+        margin-bottom: $spacing-lg;
+
+        @media (max-width: $breakpoint-sm) {
+          flex-direction: column;
+        }
+
+        .hero__cta, .hero__secondary {
+          height: 56px;
+          padding: 0 $spacing-xl;
+          font-size: $font-size-base;
+          font-weight: $font-weight-semibold;
+
+          mat-icon {
+            margin-right: $spacing-sm;
+          }
+        }
+      }
+
+      .hero__note {
+        display: flex;
+        align-items: center;
+        gap: $spacing-sm;
+        font-size: $font-size-sm;
+        opacity: 0.8;
+        margin: 0;
+
+        mat-icon {
+          color: $success-color;
+        }
+      }
+    }
+
+    &__visual {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__dashboard-preview {
+      .preview-card {
+        background: rgba(white, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: $border-radius-lg;
+        padding: $spacing-lg;
+        border: 1px solid rgba(white, 0.2);
+        width: 300px;
+        height: 200px;
+
+        .preview-header {
+          display: flex;
+          gap: $spacing-xs;
+          margin-bottom: $spacing-md;
+
+          .preview-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(white, 0.3);
+          }
+        }
+
+        .preview-content {
+          .preview-stat {
+            margin-bottom: $spacing-md;
+
+            &__value {
+              font-size: $font-size-2xl;
+              font-weight: $font-weight-bold;
+              margin-bottom: $spacing-xs;
+            }
+
+            &__label {
+              font-size: $font-size-sm;
+              opacity: 0.7;
+              margin: 0;
+            }
+          }
+
+          .preview-chart {
+            height: 60px;
+            background: linear-gradient(45deg, 
+              rgba(white, 0.1) 0%, 
+              rgba(white, 0.3) 50%, 
+              rgba(white, 0.1) 100%);
+            border-radius: $border-radius-sm;
+          }
+        }
+      }
+    }
+  }
+
+  .stats {
+    padding: $spacing-3xl 0;
+    background-color: $gray-50;
+
+    &__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: $spacing-xl;
+      text-align: center;
+    }
+
+    &__item {
+      .stats__number {
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-bold;
+        margin: 0 0 $spacing-sm 0;
+        color: $primary-color;
+      }
+
+      .stats__label {
+        font-size: $font-size-base;
+        margin: 0;
+        color: $gray-600;
+      }
+    }
+  }
+
+  .features-preview {
+    padding: $spacing-3xl 0;
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: $spacing-xl;
+      margin-bottom: $spacing-xl;
+
+      .feature-item {
+        text-align: center;
+        padding: $spacing-xl;
+
+        .feature-icon {
+          width: 64px;
+          height: 64px;
+          margin: 0 auto $spacing-lg;
+          background: linear-gradient(135deg, $primary-color, $accent-color);
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          mat-icon {
+            font-size: 32px;
+            width: 32px;
+            height: 32px;
+            color: white;
+          }
+        }
+
+        h3 {
+          font-size: $font-size-xl;
+          font-weight: $font-weight-semibold;
+          margin: 0 0 $spacing-md 0;
+        }
+
+        p {
+          font-size: $font-size-base;
+          line-height: 1.6;
+          margin: 0;
+          color: $gray-600;
+        }
+      }
+    }
+
+    &__cta {
+      text-align: center;
+
+      button {
+        height: 48px;
+        padding: 0 $spacing-xl;
+
+        mat-icon {
+          margin-left: $spacing-sm;
+        }
+      }
+    }
+  }
+
+  .testimonials {
+    padding: $spacing-3xl 0;
+    background-color: $gray-50;
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: $spacing-xl;
+    }
+  }
+
+  .cta {
+    padding: $spacing-3xl 0;
+    background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: -10%));
+    color: white;
+    position: relative;
+
+    &__content {
+      text-align: center;
+      position: relative;
+    }
+
+    &__title {
+      font-size: $font-size-3xl;
+      font-weight: $font-weight-bold;
+      margin: 0 0 $spacing-lg 0;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: $font-size-2xl;
+      }
+    }
+
+    &__subtitle {
+      font-size: $font-size-xl;
+      margin: 0 0 $spacing-xl 0;
+      opacity: 0.9;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: $font-size-lg;
+      }
+    }
+
+    &__actions {
+      display: flex;
+      gap: $spacing-md;
+      justify-content: center;
+
+      @media (max-width: $breakpoint-sm) {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .cta__button, .cta__secondary {
+        height: 56px;
+        padding: 0 $spacing-xl;
+        font-size: $font-size-base;
+        font-weight: $font-weight-semibold;
+
+        mat-icon {
+          margin-right: $spacing-sm;
+        }
+      }
+    }
+
+    &__intercom {
+      position: fixed;
+      bottom: $spacing-lg;
+      right: $spacing-lg;
+      z-index: 1000;
+
+      .intercom-button {
+        width: 56px;
+        height: 56px;
+        background: linear-gradient(135deg, $accent-color, color.adjust($accent-color, $lightness: 10%));
+        color: white;
+        box-shadow: $shadow-lg;
+
+        &:hover {
+          transform: scale(1.1);
+        }
+
+        mat-icon {
+          font-size: 24px;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: $spacing-3xl;
+
+    .section-title {
+      font-size: $font-size-3xl;
+      font-weight: $font-weight-bold;
+      margin: 0 0 $spacing-lg 0;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: $font-size-2xl;
+      }
+    }
+
+    .section-subtitle {
+      font-size: $font-size-lg;
+      margin: 0;
+      color: $gray-600;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+}
+
+// Dark theme adjustments
+.dark-theme {
+  .home {
+    .stats {
+      background-color: $gray-800;
+
+      .stats__item .stats__label {
+        color: $gray-400;
+      }
+    }
+
+    .testimonials {
+      background-color: $gray-800;
+    }
+
+    .section-header .section-subtitle {
+      color: $gray-400;
+    }
+
+    .features-preview .features-grid .feature-item p {
+      color: $gray-400;
+    }
+  }
+}

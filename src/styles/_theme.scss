@@ -1,0 +1,30 @@
+// Angular Material Theme - Simplified for compatibility
+
+// Import Material theme directly without preprocessor syntax
+@import '@angular/material/prebuilt-themes/indigo-pink.css';
+
+// Add dark theme support
+.dark-theme {
+  // Add dark theme variables here
+  --background-color: #121212;
+  --text-color: #ffffff;
+}
+
+// Custom theme mixins
+@mixin theme-background($theme) {
+  $background: map-get($theme, background);
+  $foreground: map-get($theme, foreground);
+  
+  background-color: mat.get-color-from-palette($background, 'background');
+  color: mat.get-color-from-palette($foreground, 'text');
+}
+
+@mixin primary-color($theme) {
+  $primary: map-get($theme, primary);
+  color: mat.get-color-from-palette($primary);
+}
+
+@mixin accent-color($theme) {
+  $accent: map-get($theme, accent);
+  color: mat.get-color-from-palette($accent);
+}

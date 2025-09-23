@@ -1,0 +1,382 @@
+@use '../../../../styles/variables' as *;
+
+.onboarding-page {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: $spacing-md 0;
+
+  @include mobile {
+    padding: $spacing-sm 0;
+  }
+}
+
+.onboarding-header {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+
+  .page-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 $spacing-sm 0;
+  }
+
+  .page-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+}
+
+.onboarding-stepper {
+  background: transparent;
+
+  ::ng-deep {
+    .mat-step-header {
+      padding: $spacing-md;
+      border-radius: 8px;
+      margin-bottom: $spacing-sm;
+
+      &.cdk-step-header-selected {
+        background-color: rgba(var(--primary-color-rgb), 0.08);
+      }
+
+      .mat-step-icon {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .mat-step-icon-selected {
+        background-color: var(--primary-color);
+      }
+
+      .mat-step-icon-state-done {
+        background-color: var(--success-color);
+      }
+    }
+
+    .mat-stepper-horizontal-line {
+      border-top-color: var(--border-color);
+      margin: 0 $spacing-sm;
+    }
+  }
+}
+
+.step-content {
+  padding: $spacing-xl $spacing-md;
+  background-color: var(--surface-color);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  margin: $spacing-md 0;
+
+  @include mobile {
+    padding: $spacing-md $spacing-sm;
+  }
+}
+
+.step-header {
+  text-align: center;
+  margin-bottom: $spacing-xl;
+
+  mat-icon {
+    font-size: 48px;
+    width: 48px;
+    height: 48px;
+    margin-bottom: $spacing-sm;
+  }
+
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 $spacing-xs 0;
+  }
+
+  p {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-md;
+  margin-bottom: $spacing-lg;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+    gap: $spacing-sm;
+  }
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
+}
+
+.preferences-section {
+  margin-bottom: $spacing-xl;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 $spacing-md 0;
+  }
+
+  .section-description {
+    color: var(--text-secondary);
+    margin-bottom: $spacing-md;
+    font-size: 14px;
+  }
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  .mat-mdc-checkbox {
+    .mdc-form-field {
+      color: var(--text-primary);
+    }
+  }
+}
+
+.radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+
+  .mat-mdc-radio-button {
+    .mdc-form-field {
+      color: var(--text-primary);
+    }
+  }
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: $spacing-sm;
+
+  @include mobile {
+    grid-template-columns: 1fr;
+  }
+}
+
+.feature-card {
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  
+  &:hover {
+    border-color: rgba(var(--primary-color-rgb), 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &.selected {
+    border-color: var(--primary-color);
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+  }
+
+  .mat-mdc-card-content {
+    padding: $spacing-md;
+  }
+
+  .feature-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-xs;
+
+    .feature-name {
+      font-weight: 500;
+      color: var(--text-primary);
+      font-size: 14px;
+    }
+
+    mat-icon {
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+
+  .feature-description {
+    color: var(--text-secondary);
+    font-size: 12px;
+    line-height: 1.4;
+    margin: 0;
+  }
+}
+
+.step-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-md;
+  background-color: rgba(var(--background-color-rgb), 0.5);
+  border-radius: 0 0 12px 12px;
+  margin-top: 0;
+
+  button {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    font-weight: 500;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  button:only-child {
+    margin-left: auto;
+  }
+}
+
+.welcome-content {
+  text-align: center;
+
+  .welcome-icon {
+    margin-bottom: $spacing-md;
+
+    mat-icon {
+      font-size: 64px;
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  h2 {
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 $spacing-md 0;
+  }
+
+  .welcome-message {
+    font-size: 16px;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: $spacing-xl;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.next-steps {
+  text-align: left;
+  max-width: 400px;
+  margin: 0 auto $spacing-xl auto;
+
+  h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 $spacing-md 0;
+    text-align: center;
+  }
+
+  .steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  .step-item {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+    padding: $spacing-sm;
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+    border-radius: 8px;
+    border-left: 3px solid var(--primary-color);
+
+    mat-icon {
+      color: var(--primary-color);
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+
+    span {
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 500;
+    }
+  }
+}
+
+.welcome-actions {
+  .complete-button {
+    height: 48px;
+    padding: 0 $spacing-lg;
+    font-size: 16px;
+    font-weight: 600;
+
+    mat-icon {
+      margin-right: $spacing-xs;
+      font-size: 20px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// Form field customizations
+::ng-deep {
+  .onboarding-page {
+    .mat-mdc-form-field {
+      width: 100%;
+
+      .mat-mdc-form-field-flex {
+        border-radius: 8px;
+      }
+
+      &.mat-form-field-appearance-outline {
+        .mat-mdc-form-field-outline {
+          border-radius: 8px;
+        }
+      }
+    }
+
+    .mat-mdc-select-panel {
+      border-radius: 8px;
+    }
+
+    .mat-mdc-card {
+      border-radius: 8px;
+    }
+  }
+}
+
+// Dark theme adjustments
+.dark-theme {
+  .step-content {
+    background-color: var(--surface-dark);
+    border-color: var(--border-dark);
+  }
+
+  .feature-card {
+    background-color: var(--surface-dark);
+
+    &.selected {
+      background-color: rgba(var(--primary-color-rgb), 0.1);
+    }
+  }
+
+  .step-item {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+  }
+}

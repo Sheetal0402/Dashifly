@@ -1,0 +1,401 @@
+@use '../../../styles/variables' as *;
+
+.faq {
+  .faq-hero {
+    background: linear-gradient(135deg, $gray-900 0%, $gray-800 100%);
+    color: white;
+    padding: $spacing-3xl 0;
+    text-align: center;
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+
+      .hero-title {
+        font-size: $font-size-4xl;
+        font-weight: $font-weight-bold;
+        margin: 0 0 $spacing-lg 0;
+        line-height: 1.2;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-3xl;
+        }
+      }
+
+      .hero-subtitle {
+        font-size: $font-size-xl;
+        margin: 0 0 $spacing-xl 0;
+        opacity: 0.9;
+        line-height: 1.6;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-lg;
+        }
+      }
+
+      .hero-cta {
+        height: 56px;
+        padding: 0 $spacing-xl;
+        font-size: $font-size-base;
+        font-weight: $font-weight-semibold;
+
+        mat-icon {
+          margin-right: $spacing-sm;
+        }
+      }
+    }
+  }
+
+  .faq-content {
+    padding: $spacing-3xl 0;
+
+    .faq-categories {
+      max-width: 900px;
+      margin: 0 auto;
+
+      .category-section {
+        margin-bottom: $spacing-3xl;
+
+        .category-title {
+          font-size: $font-size-2xl;
+          font-weight: $font-weight-bold;
+          margin: 0 0 $spacing-xl 0;
+          color: $gray-800;
+          padding-bottom: $spacing-md;
+          border-bottom: 2px solid $primary-color;
+        }
+
+        .faq-accordion {
+          .mat-expansion-panel {
+            margin-bottom: $spacing-md;
+            border-radius: $border-radius-lg !important;
+            box-shadow: $shadow-sm;
+            border: 1px solid $gray-200;
+
+            &:last-child {
+              margin-bottom: 0;
+            }
+
+            .mat-expansion-panel-header {
+              padding: $spacing-lg $spacing-xl;
+
+              .mat-expansion-panel-header-title {
+                font-size: $font-size-lg;
+                font-weight: $font-weight-semibold;
+                color: $gray-800;
+              }
+            }
+
+            .mat-expansion-panel-content {
+              .mat-expansion-panel-body {
+                padding: 0 $spacing-xl $spacing-lg;
+                
+                p {
+                  font-size: $font-size-base;
+                  line-height: 1.6;
+                  margin: 0;
+                  color: $gray-600;
+                }
+              }
+            }
+
+            &.mat-expanded {
+              .mat-expansion-panel-header {
+                background-color: $gray-50;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .faq-contact {
+    padding: $spacing-3xl 0;
+    background-color: $gray-50;
+
+    .contact-content {
+      text-align: center;
+
+      h2 {
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-bold;
+        margin: 0 0 $spacing-lg 0;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-2xl;
+        }
+      }
+
+      p {
+        font-size: $font-size-xl;
+        margin: 0 0 $spacing-3xl 0;
+        color: $gray-600;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-lg;
+        }
+      }
+
+      .contact-options {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: $spacing-xl;
+        max-width: 900px;
+        margin: 0 auto;
+
+        .contact-option {
+          background: white;
+          padding: $spacing-xl;
+          border-radius: $border-radius-lg;
+          box-shadow: $shadow-sm;
+          text-align: center;
+          transition: $transition-normal;
+
+          &:hover {
+            transform: translateY(-4px);
+            box-shadow: $shadow-md;
+          }
+
+          mat-icon {
+            font-size: 48px;
+            width: 48px;
+            height: 48px;
+            color: $primary-color;
+            margin-bottom: $spacing-lg;
+          }
+
+          h3 {
+            font-size: $font-size-lg;
+            font-weight: $font-weight-semibold;
+            margin: 0 0 $spacing-md 0;
+            color: $gray-800;
+          }
+
+          p {
+            font-size: $font-size-base;
+            margin: 0 0 $spacing-lg 0;
+            color: $gray-600;
+          }
+
+          button {
+            width: 100%;
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+
+  .help-search {
+    padding: $spacing-3xl 0;
+
+    .search-content {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
+
+      h2 {
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-bold;
+        margin: 0 0 $spacing-lg 0;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-2xl;
+        }
+      }
+
+      p {
+        font-size: $font-size-lg;
+        margin: 0 0 $spacing-xl 0;
+        color: $gray-600;
+      }
+
+      .search-box {
+        display: flex;
+        align-items: center;
+        background: white;
+        border: 2px solid $gray-300;
+        border-radius: $border-radius-lg;
+        padding: $spacing-md;
+        margin-bottom: $spacing-xl;
+        box-shadow: $shadow-sm;
+
+        &:focus-within {
+          border-color: $primary-color;
+          box-shadow: 0 0 0 3px rgba($primary-color, 0.1);
+        }
+
+        mat-icon {
+          color: $gray-500;
+          margin-right: $spacing-md;
+        }
+
+        .search-input {
+          flex: 1;
+          border: none;
+          outline: none;
+          font-size: $font-size-base;
+          padding: $spacing-sm 0;
+
+          &::placeholder {
+            color: $gray-500;
+          }
+        }
+
+        button {
+          margin-left: $spacing-md;
+          height: 40px;
+        }
+
+        @media (max-width: $breakpoint-sm) {
+          flex-direction: column;
+          gap: $spacing-md;
+
+          .search-input {
+            width: 100%;
+          }
+
+          button {
+            margin-left: 0;
+            width: 100%;
+          }
+        }
+      }
+
+      .popular-topics {
+        h3 {
+          font-size: $font-size-lg;
+          font-weight: $font-weight-semibold;
+          margin: 0 0 $spacing-lg 0;
+          color: $gray-800;
+        }
+
+        .topic-tags {
+          display: flex;
+          flex-wrap: wrap;
+          gap: $spacing-sm;
+          justify-content: center;
+
+          .topic-tag {
+            background: $gray-100;
+            color: $gray-700;
+            padding: $spacing-sm $spacing-md;
+            border-radius: $border-radius-sm;
+            font-size: $font-size-sm;
+            font-weight: $font-weight-medium;
+            cursor: pointer;
+            transition: $transition-fast;
+
+            &:hover {
+              background: $primary-color;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dark theme adjustments
+.dark-theme {
+  .faq {
+    .faq-content {
+      .faq-categories .category-section {
+        .category-title {
+          color: $gray-200;
+        }
+
+        .faq-accordion .mat-expansion-panel {
+          background-color: $gray-700;
+          border-color: $gray-600;
+
+          .mat-expansion-panel-header .mat-expansion-panel-header-title {
+            color: $gray-200;
+          }
+
+          .mat-expansion-panel-content .mat-expansion-panel-body p {
+            color: $gray-300;
+          }
+
+          &.mat-expanded .mat-expansion-panel-header {
+            background-color: $gray-600;
+          }
+        }
+      }
+    }
+
+    .faq-contact {
+      background-color: $gray-800;
+
+      .contact-content {
+        h2 {
+          color: $gray-200;
+        }
+
+        p {
+          color: $gray-400;
+        }
+
+        .contact-options .contact-option {
+          background: $gray-700;
+
+          h3 {
+            color: $gray-200;
+          }
+
+          p {
+            color: $gray-300;
+          }
+        }
+      }
+    }
+
+    .help-search {
+      .search-content {
+        h2 {
+          color: $gray-200;
+        }
+
+        p {
+          color: $gray-400;
+        }
+
+        .search-box {
+          background: $gray-700;
+          border-color: $gray-600;
+
+          &:focus-within {
+            border-color: $primary-color;
+          }
+
+          .search-input {
+            background: transparent;
+            color: $gray-200;
+
+            &::placeholder {
+              color: $gray-400;
+            }
+          }
+        }
+
+        .popular-topics {
+          h3 {
+            color: $gray-200;
+          }
+
+          .topic-tags .topic-tag {
+            background: $gray-600;
+            color: $gray-300;
+
+            &:hover {
+              background: $primary-color;
+              color: white;
+            }
+          }
+        }
+      }
+    }
+  }
+}

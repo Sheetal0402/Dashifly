@@ -1,0 +1,199 @@
+<div class="overview-page">
+  <!-- Page Header -->
+  <div class="page-header">
+    <h1 class="page-title">Dashboard Overview</h1>
+    <p class="page-subtitle">Welcome back! Here's what's happening with your projects.</p>
+  </div>
+
+  <!-- Stats Cards -->
+  <div class="stats-grid" *ngIf="stats$ | async as stats">
+    <app-stat-card
+      title="Total Users"
+      [value]="stats.totalUsers"
+      icon="people"
+      trend="+12%"
+      trendDirection="up"
+      color="primary">
+    </app-stat-card>
+
+    <app-stat-card
+      title="Revenue"
+      [value]="stats.revenue"
+      format="currency"
+      icon="attach_money"
+      trend="+8.2%"
+      trendDirection="up"
+      color="success">
+    </app-stat-card>
+
+    <app-stat-card
+      title="Conversion Rate"
+      [value]="stats.conversionRate"
+      format="percentage"
+      icon="trending_up"
+      trend="+0.5%"
+      trendDirection="up"
+      color="info">
+    </app-stat-card>
+
+    <app-stat-card
+      title="Active Projects"
+      [value]="stats.activeProjects"
+      icon="folder_open"
+      trend="-2%"
+      trendDirection="down"
+      color="warning">
+    </app-stat-card>
+  </div>
+
+  <!-- Main Content Grid -->
+  <div class="content-grid">
+    <!-- Recent Activity -->
+    <mat-card class="activity-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>history</mat-icon>
+          Recent Activity
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="activity-list" *ngIf="activities$ | async as activities">
+          <div class="activity-item" *ngFor="let activity of activities">
+            <div class="activity-icon">
+              <mat-icon [ngSwitch]="activity.type">
+                <span *ngSwitchCase="'user_signup'">person_add</span>
+                <span *ngSwitchCase="'payment'">payment</span>
+                <span *ngSwitchCase="'project_created'">create_new_folder</span>
+                <span *ngSwitchDefault>notifications</span>
+              </mat-icon>
+            </div>
+            <div class="activity-content">
+              <div class="activity-description">{{ activity.description }}</div>
+              <div class="activity-meta">
+                <span class="activity-user">{{ activity.user }}</span>
+                <span class="activity-time">{{ activity.timestamp | date:'short' }}</span>
+              </div>
+            </div>
+            <div class="activity-amount" *ngIf="activity.amount">
+              ${{ activity.amount }}
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Quick Actions -->
+    <mat-card class="actions-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>bolt</mat-icon>
+          Quick Actions
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="quick-actions">
+          <button mat-raised-button color="primary" class="action-button">
+            <mat-icon>add</mat-icon>
+            Create Project
+          </button>
+          <button mat-raised-button color="accent" class="action-button">
+            <mat-icon>group_add</mat-icon>
+            Invite Users
+          </button>
+          <button mat-stroked-button class="action-button">
+            <mat-icon>file_download</mat-icon>
+            Export Data
+          </button>
+          <button mat-stroked-button class="action-button">
+            <mat-icon>analytics</mat-icon>
+            View Reports
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- Progress Overview -->
+    <mat-card class="progress-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>track_changes</mat-icon>
+          Progress Overview
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>Onboarding Completion</span>
+            <span class="progress-value">75%</span>
+          </div>
+          <mat-progress-bar mode="determinate" value="75" color="primary"></mat-progress-bar>
+        </div>
+        
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>Feature Adoption</span>
+            <span class="progress-value">45%</span>
+          </div>
+          <mat-progress-bar mode="determinate" value="45" color="accent"></mat-progress-bar>
+        </div>
+        
+        <div class="progress-item">
+          <div class="progress-label">
+            <span>User Engagement</span>
+            <span class="progress-value">88%</span>
+          </div>
+          <mat-progress-bar mode="determinate" value="88" color="warn"></mat-progress-bar>
+        </div>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- System Status -->
+    <mat-card class="status-card">
+      <mat-card-header>
+        <mat-card-title>
+          <mat-icon>monitor_heart</mat-icon>
+          System Status
+        </mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="status-grid">
+          <div class="status-item">
+            <mat-chip-set>
+              <mat-chip color="primary" selected>
+                <mat-icon matChipAvatar>cloud</mat-icon>
+                API: Online
+              </mat-chip>
+            </mat-chip-set>
+          </div>
+          
+          <div class="status-item">
+            <mat-chip-set>
+              <mat-chip color="primary" selected>
+                <mat-icon matChipAvatar>storage</mat-icon>
+                Database: Healthy
+              </mat-chip>
+            </mat-chip-set>
+          </div>
+          
+          <div class="status-item">
+            <mat-chip-set>
+              <mat-chip color="accent" selected>
+                <mat-icon matChipAvatar>security</mat-icon>
+                Security: Active
+              </mat-chip>
+            </mat-chip-set>
+          </div>
+          
+          <div class="status-item">
+            <mat-chip-set>
+              <mat-chip color="warn" selected>
+                <mat-icon matChipAvatar>backup</mat-icon>
+                Backup: Pending
+              </mat-chip>
+            </mat-chip-set>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

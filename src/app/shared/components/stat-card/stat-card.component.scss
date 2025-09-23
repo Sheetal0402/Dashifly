@@ -1,0 +1,119 @@
+@use '../../../../styles/variables' as *;
+@use 'sass:color';
+
+.stat-card {
+  height: 100%;
+  transition: $transition-normal;
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: $spacing-md;
+  }
+
+  &__icon {
+    width: 48px;
+    height: 48px;
+    border-radius: $border-radius-md;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    mat-icon {
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+      color: white;
+    }
+
+    &--primary {
+      background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: 20%));
+    }
+
+    &--success {
+      background: linear-gradient(135deg, $success-color, color.adjust($success-color, $lightness: 20%));
+    }
+
+    &--warning {
+      background: linear-gradient(135deg, $warning-color, color.adjust($warning-color, $lightness: 20%));
+    }
+
+    &--info {
+      background: linear-gradient(135deg, $info-color, color.adjust($info-color, $lightness: 20%));
+    }
+  }
+
+  &__delta {
+    display: flex;
+    align-items: center;
+    gap: $spacing-xs;
+    padding: $spacing-xs $spacing-sm;
+    border-radius: $border-radius-sm;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-medium;
+
+    mat-icon {
+      font-size: 16px;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--positive {
+      background-color: rgba($success-color, 0.1);
+      color: $success-color;
+    }
+
+    &--negative {
+      background-color: rgba($error-color, 0.1);
+      color: $error-color;
+    }
+
+    &--neutral {
+      background-color: rgba($gray-500, 0.1);
+      color: $gray-500;
+    }
+  }
+
+  &__content {
+    .stat-card__value {
+      font-size: $font-size-3xl;
+      font-weight: $font-weight-bold;
+      margin: 0 0 $spacing-xs 0;
+      line-height: 1.2;
+    }
+
+    .stat-card__title {
+      font-size: $font-size-base;
+      font-weight: $font-weight-medium;
+      margin: 0 0 $spacing-xs 0;
+      color: $gray-700;
+    }
+
+    .stat-card__subtitle {
+      font-size: $font-size-sm;
+      margin: 0;
+      color: $gray-500;
+    }
+  }
+}
+
+// Dark theme adjustments
+.dark-theme {
+  .stat-card {
+    &__content {
+      .stat-card__title {
+        color: $gray-300;
+      }
+
+      .stat-card__subtitle {
+        color: $gray-400;
+      }
+    }
+  }
+}

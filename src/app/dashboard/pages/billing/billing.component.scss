@@ -1,0 +1,315 @@
+@use '../../../../styles/variables' as *;
+
+.billing-page {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: $spacing-xl;
+
+  .page-title {
+    font-size: 32px;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin: 0 0 $spacing-xs 0;
+  }
+
+  .page-subtitle {
+    font-size: 16px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+}
+
+.billing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $spacing-md;
+
+  @include tablet {
+    grid-template-columns: 1fr;
+  }
+
+  @include mobile {
+    gap: $spacing-sm;
+  }
+}
+
+// Plan Card
+.plan-card {
+  .mat-mdc-card-header .mat-mdc-card-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    mat-icon {
+      color: var(--primary-color);
+    }
+  }
+
+  .plan-info {
+    text-align: center;
+    margin-bottom: $spacing-md;
+
+    .plan-name {
+      font-size: 24px;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: $spacing-xs;
+    }
+
+    .plan-price {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary-color);
+      margin-bottom: $spacing-sm;
+    }
+  }
+
+  .plan-features {
+    .feature-item {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+      margin-bottom: $spacing-sm;
+
+      mat-icon {
+        font-size: 16px;
+        width: 16px;
+        height: 16px;
+      }
+
+      span {
+        color: var(--text-primary);
+        font-size: 14px;
+      }
+    }
+  }
+}
+
+// Usage Card
+.usage-card {
+  .mat-mdc-card-header .mat-mdc-card-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    mat-icon {
+      color: var(--accent-color);
+    }
+  }
+
+  .usage-item {
+    margin-bottom: $spacing-md;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .usage-label {
+      font-weight: 500;
+      color: var(--text-primary);
+      margin-bottom: $spacing-xs;
+      font-size: 14px;
+    }
+
+    .usage-bar {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+
+      .mat-mdc-progress-bar {
+        flex: 1;
+        height: 8px;
+        border-radius: 4px;
+      }
+
+      .usage-text {
+        font-size: 12px;
+        color: var(--text-secondary);
+        min-width: 80px;
+        text-align: right;
+      }
+    }
+  }
+}
+
+// Payment Card
+.payment-card {
+  .mat-mdc-card-header .mat-mdc-card-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    mat-icon {
+      color: var(--success-color);
+    }
+  }
+
+  .payment-method {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .card-info {
+      display: flex;
+      align-items: center;
+      gap: $spacing-sm;
+
+      mat-icon {
+        color: var(--text-secondary);
+      }
+
+      .card-details {
+        .card-number {
+          font-weight: 500;
+          color: var(--text-primary);
+          font-size: 14px;
+        }
+
+        .card-expiry {
+          font-size: 12px;
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
+}
+
+// History Card
+.history-card {
+  .mat-mdc-card-header .mat-mdc-card-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    mat-icon {
+      color: var(--info-color);
+    }
+  }
+
+  .invoice-list {
+    .invoice-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: $spacing-sm 0;
+      border-bottom: 1px solid var(--border-color);
+
+      &:last-child {
+        border-bottom: none;
+      }
+
+      .invoice-info {
+        .invoice-date {
+          font-weight: 500;
+          color: var(--text-primary);
+          font-size: 14px;
+        }
+
+        .invoice-description {
+          font-size: 12px;
+          color: var(--text-secondary);
+        }
+      }
+
+      .invoice-amount {
+        font-weight: 600;
+        color: var(--text-primary);
+        font-size: 14px;
+      }
+
+      .invoice-actions {
+        button {
+          color: var(--text-secondary);
+        }
+      }
+    }
+  }
+}
+
+// Stripe Card
+.stripe-card {
+  grid-column: 1 / -1;
+
+  .mat-mdc-card-header .mat-mdc-card-title {
+    display: flex;
+    align-items: center;
+    gap: $spacing-sm;
+
+    mat-icon {
+      color: var(--warning-color);
+    }
+  }
+
+  .stripe-placeholder {
+    text-align: center;
+    padding: $spacing-lg;
+    background-color: rgba(var(--primary-color-rgb), 0.05);
+    border-radius: 8px;
+    border: 2px dashed rgba(var(--primary-color-rgb), 0.2);
+
+    .stripe-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: $spacing-sm;
+      margin-bottom: $spacing-md;
+
+      mat-icon {
+        font-size: 32px;
+        width: 32px;
+        height: 32px;
+        color: var(--primary-color);
+      }
+
+      span {
+        font-size: 24px;
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+    }
+
+    p {
+      color: var(--text-secondary);
+      margin: 0;
+      line-height: 1.5;
+    }
+  }
+}
+
+// Card customizations
+::ng-deep {
+  .billing-page .mat-mdc-card {
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+    .mat-mdc-card-header {
+      .mat-mdc-card-title {
+        color: var(--text-primary);
+        font-size: 18px;
+        font-weight: 500;
+      }
+
+      .mat-mdc-card-subtitle {
+        color: var(--text-secondary);
+      }
+    }
+  }
+}
+
+// Dark theme adjustments
+.dark-theme {
+  .billing-page .mat-mdc-card {
+    background-color: var(--surface-dark);
+    border-color: var(--border-dark);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .stripe-placeholder {
+    background-color: rgba(var(--primary-color-rgb), 0.1);
+    border-color: rgba(var(--primary-color-rgb), 0.3);
+  }
+}

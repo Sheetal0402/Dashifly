@@ -1,0 +1,160 @@
+<div class="dashboard-layout">
+  <mat-sidenav-container class="sidenav-container">
+    <!-- Sidenav -->
+    <mat-sidenav 
+      #drawer 
+      class="sidenav" 
+      fixedInViewport 
+      [attr.role]="isMobile ? 'dialog' : 'navigation'"
+      [mode]="isMobile ? 'over' : 'side'"
+      [opened]="!isMobile">
+      
+      <!-- Sidenav Header -->
+      <div class="sidenav-header">
+        <div class="brand">
+          <span class="brand-logo">D</span>
+          <span class="brand-text">Dashify</span>
+        </div>
+        <button mat-icon-button class="close-button" (click)="drawer.close()" *ngIf="isMobile">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+
+      <!-- User Profile -->
+      <div class="user-profile">
+        <div class="user-avatar">{{ user.avatar }}</div>
+        <div class="user-info">
+          <div class="user-name">{{ user.name }}</div>
+          <div class="user-email">{{ user.email }}</div>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
+      <!-- Navigation Menu -->
+      <mat-nav-list class="nav-list">
+        <a 
+          mat-list-item 
+          *ngFor="let item of navItems" 
+          [routerLink]="item.route"
+          routerLinkActive="active"
+          (click)="closeSidenavOnMobile()">
+          <mat-icon matListItemIcon>{{ item.icon }}</mat-icon>
+          <span matListItemTitle>{{ item.label }}</span>
+          <span matListItemMeta *ngIf="item.badge" 
+                matBadge="{{ item.badge }}" 
+                matBadgeColor="warn" 
+                matBadgeSize="small"
+                class="badge-container">
+          </span>
+        </a>
+      </mat-nav-list>
+
+      <mat-divider></mat-divider>
+
+      <!-- Help & Support -->
+      <mat-nav-list class="help-section">
+        <a mat-list-item>
+          <mat-icon matListItemIcon>help</mat-icon>
+          <span matListItemTitle>Help & Support</span>
+        </a>
+        <a mat-list-item>
+          <mat-icon matListItemIcon>feedback</mat-icon>
+          <span matListItemTitle>Send Feedback</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <!-- Main Content -->
+    <mat-sidenav-content class="main-content">
+      <!-- Top Toolbar -->
+      <mat-toolbar class="top-toolbar" color="primary">
+        <button 
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="toggleSidenav()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+
+        <div class="toolbar-spacer"></div>
+
+        <!-- Theme Toggle -->
+        <button 
+          mat-icon-button 
+          (click)="toggleTheme()" 
+          [matTooltip]="isDarkTheme ? 'Switch to light theme' : 'Switch to dark theme'">
+          <mat-icon>{{ isDarkTheme ? 'light_mode' : 'dark_mode' }}</mat-icon>
+        </button>
+
+        <!-- Notifications -->
+        <button 
+          mat-icon-button 
+          [matMenuTriggerFor]="notificationMenu"
+          matTooltip="Notifications">
+          <mat-icon 
+            matBadge="{{ notifications.length }}" 
+            matBadgeColor="warn" 
+            matBadgeSize="small"
+            [matBadgeHidden]="notifications.length === 0">
+            notifications
+          </mat-icon>
+        </button>
+        <mat-menu #notificationMenu="matMenu" xPosition="before" class="notification-menu">
+          <div class="notification-header" mat-menu-item disabled>
+            <span>Notifications</span>
+            <button mat-icon-button (click)="clearNotifications()" *ngIf="notifications.length > 0">
+              <mat-icon>clear_all</mat-icon>
+            </button>
+          </div>
+          <mat-divider *ngIf="notifications.length > 0"></mat-divider>
+          <div *ngIf="notifications.length === 0" mat-menu-item disabled class="no-notifications">
+            No new notifications
+          </div>
+          <div *ngFor="let notification of notifications" mat-menu-item class="notification-item">
+            <div class="notification-content">
+              <div class="notification-title">{{ notification.title }}</div>
+              <div class="notification-message">{{ notification.message }}</div>
+              <div class="notification-time">{{ notification.time }}</div>
+            </div>
+          </div>
+        </mat-menu>
+
+        <!-- User Menu -->
+        <button 
+          mat-icon-button 
+          [matMenuTriggerFor]="userMenu"
+          class="user-menu-button">
+          <div class="user-avatar-small">{{ user.avatar }}</div>
+        </button>
+        <mat-menu #userMenu="matMenu" xPosition="before">
+          <div mat-menu-item disabled class="user-menu-header">
+            <div class="user-menu-info">
+              <div class="user-menu-name">{{ user.name }}</div>
+              <div class="user-menu-email">{{ user.email }}</div>
+            </div>
+          </div>
+          <mat-divider></mat-divider>
+          <button mat-menu-item routerLink="/app/settings">
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+          </button>
+          <button mat-menu-item>
+            <mat-icon>account_circle</mat-icon>
+            <span>Profile</span>
+          </button>
+          <mat-divider></mat-divider>
+          <button mat-menu-item (click)="logout()">
+            <mat-icon>logout</mat-icon>
+            <span>Logout</span>
+          </button>
+        </mat-menu>
+      </mat-toolbar>
+
+      <!-- Page Content -->
+      <div class="page-content">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

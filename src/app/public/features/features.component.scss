@@ -1,0 +1,182 @@
+@use '../../../styles/variables' as *;
+@use 'sass:color';
+
+.features {
+  .features-hero {
+    background: linear-gradient(135deg, $gray-900 0%, $gray-800 100%);
+    color: white;
+    padding: $spacing-3xl 0;
+    text-align: center;
+
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+
+      .hero-title {
+        font-size: $font-size-4xl;
+        font-weight: $font-weight-bold;
+        margin: 0 0 $spacing-lg 0;
+        line-height: 1.2;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-3xl;
+        }
+      }
+
+      .hero-subtitle {
+        font-size: $font-size-xl;
+        margin: 0 0 $spacing-xl 0;
+        opacity: 0.9;
+        line-height: 1.6;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-lg;
+        }
+      }
+
+      .hero-cta {
+        height: 56px;
+        padding: 0 $spacing-xl;
+        font-size: $font-size-base;
+        font-weight: $font-weight-semibold;
+      }
+    }
+  }
+
+  .features-content {
+    padding: $spacing-3xl 0;
+
+    .features-tabs {
+      .mat-mdc-tab-group {
+        margin-bottom: $spacing-xl;
+      }
+
+      .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: $spacing-xl;
+        padding: $spacing-xl 0;
+      }
+    }
+  }
+
+  .additional-features {
+    padding: $spacing-3xl 0;
+    background-color: $gray-50;
+
+    .section-title {
+      font-size: $font-size-3xl;
+      font-weight: $font-weight-bold;
+      text-align: center;
+      margin: 0 0 $spacing-3xl 0;
+
+      @media (max-width: $breakpoint-md) {
+        font-size: $font-size-2xl;
+      }
+    }
+
+    .additional-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: $spacing-xl;
+
+      .additional-item {
+        background: white;
+        padding: $spacing-xl;
+        border-radius: $border-radius-lg;
+        box-shadow: $shadow-sm;
+        transition: $transition-normal;
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: $shadow-md;
+        }
+
+        h3 {
+          font-size: $font-size-lg;
+          font-weight: $font-weight-semibold;
+          margin: 0 0 $spacing-md 0;
+          color: $gray-800;
+        }
+
+        p {
+          font-size: $font-size-base;
+          line-height: 1.6;
+          margin: 0;
+          color: $gray-600;
+        }
+      }
+    }
+  }
+
+  .features-cta {
+    padding: $spacing-3xl 0;
+    background: linear-gradient(135deg, $primary-color, color.adjust($primary-color, $lightness: -10%));
+    color: white;
+
+    .cta-content {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto;
+
+      h2 {
+        font-size: $font-size-3xl;
+        font-weight: $font-weight-bold;
+        margin: 0 0 $spacing-lg 0;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-2xl;
+        }
+      }
+
+      p {
+        font-size: $font-size-xl;
+        margin: 0 0 $spacing-xl 0;
+        opacity: 0.9;
+
+        @media (max-width: $breakpoint-md) {
+          font-size: $font-size-lg;
+        }
+      }
+
+      .cta-actions {
+        display: flex;
+        gap: $spacing-md;
+        justify-content: center;
+
+        @media (max-width: $breakpoint-sm) {
+          flex-direction: column;
+          align-items: center;
+        }
+
+        button {
+          height: 56px;
+          padding: 0 $spacing-xl;
+          font-size: $font-size-base;
+          font-weight: $font-weight-semibold;
+        }
+      }
+    }
+  }
+}
+
+// Dark theme adjustments
+.dark-theme {
+  .features {
+    .additional-features {
+      background-color: $gray-800;
+
+      .additional-grid .additional-item {
+        background: $gray-700;
+
+        h3 {
+          color: $gray-200;
+        }
+
+        p {
+          color: $gray-300;
+        }
+      }
+    }
+  }
+}
